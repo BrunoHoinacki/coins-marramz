@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="imagens/boteco_sem_fundo.png">
+    <link rel="shortcut icon" type="image/png" href="imagens/boteco_sem_fundo.png">
+    <link rel="apple-touch-icon" href="imagens/boteco_sem_fundo.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <title>MARRAMZ DayZ Store</title>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00ff41',
+                        secondary: '#ff4444',
+                        darkBg: '#0a0a0a',
+                        cardBg: 'rgba(15, 15, 15, 0.9)',
+                        textPrimary: '#ffffff',
+                        textSecondary: '#cccccc',
+                        accentBlue: '#00aaff'
+                    },
+                    fontFamily: {
+                        'rajdhani': ['Rajdhani', 'sans-serif'],
+                        'orbitron': ['Orbitron', 'monospace']
+                    },
+                    animation: {
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'modalSlideIn': 'modalSlideIn 0.3s ease-out',
+                        'slideInRight': 'slideInRight 0.5s ease',
+                        'cartGlow': 'cartGlow 2s infinite'
+                    },
+                    keyframes: {
+                        glow: {
+                            'from': { textShadow: '0 0 30px rgba(0, 255, 65, 0.6)' },
+                            'to': { textShadow: '0 0 50px rgba(0, 255, 65, 0.8)' }
+                        },
+                        modalSlideIn: {
+                            'from': { transform: 'translateY(-50px)', opacity: '0' },
+                            'to': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideInRight: {
+                            'from': { transform: 'translateX(100%)', opacity: '0' },
+                            'to': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        cartGlow: {
+                            '0%, 100%': { borderColor: '#00ff41' },
+                            '50%': { borderColor: '#00aaff' }
+                        }
+                    },
+                    backdropBlur: {
+                        '10': '10px'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #0a0a0a;
+            overflow-x: hidden;
+        }
+
+        .cart-panel.persistent {
+            animation: cartGlow 2s infinite;
+        }
+
+        .logo-glow {
+            filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.6));
+            transition: all 0.3s ease;
+        }
+
+        .logo-glow:hover {
+            filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.8));
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body class="font-rajdhani bg-darkBg text-textPrimary leading-relaxed overflow-x-hidden">
+    <div class="relative h-screen flex items-center justify-center overflow-hidden">
+        <video autoplay muted loop class="absolute top-0 left-0 w-full h-full object-cover -z-20">
+            <source src="imagens/dayz-background.mp4" type="video/mp4">
+        </video>
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-black/70 via-black/50 to-black/80 -z-10">
+        </div>
+
+        <div class="text-center z-10 max-w-4xl px-5">
+            <img src="imagens/marramz.webp" alt="MARRAMZ Logo" class="w-[900px] h-auto mb-8 logo-glow mx-auto max-w-full 
+                        md:w-[750px] sm:w-[600px]" id="mainLogo">
+            <p class="text-2xl mb-8 text-textSecondary">Sua jornada DayZ começa aqui</p>
+
+            <nav class="fixed top-5 right-5 z-50 flex flex-col md:flex-row gap-4">
+                <a href="doar.html"
+                    class="px-5 py-3 bg-gradient-to-r from-yellow-400 to-yellow-300 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg backdrop-blur-sm">
+                    💎 Doar
+                </a>
+                <a href="https://discord.gg/marramz" target="_blank"
+                    class="px-5 py-3 bg-primary/10 border-2 border-primary text-primary rounded-full font-medium transition-all duration-300 hover:bg-primary hover:text-darkBg hover:-translate-y-1 hover:shadow-lg backdrop-blur-sm">
+                    Discord
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <section class="py-20 px-5 max-w-6xl mx-auto">
+        <h2 class="font-orbitron text-4xl text-center mb-12 text-primary"><i class="fas fa-coins text-accentBlue"></i>
+            MarramZCoins</h2>
+        <p class="text-center text-textSecondary mb-8">
+            Faça sua compra dentro do server.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <div
+                class="bg-black/60 border-2 border-primary/30 rounded-2xl p-8 text-center transition-all duration-300 hover:border-primary hover:-translate-y-2 hover:shadow-xl backdrop-blur-sm">
+                <h3 class="font-orbitron text-2xl mb-4 text-primary">5 Moedas de MarramZCoins</h3>
+                <div class="text-3xl font-semibold text-accentBlue mb-5">R$ 5,00</div>
+                <p class="text-textSecondary mb-6 leading-relaxed">
+                    <strong>Inclui:</strong><br>
+                    5 moedas para comprar direto em nossa loja dentro do jogo
+                </p>
+                <button
+                    class="bg-accentBlue text-white border-none rounded-2xl px-4 py-2 text-sm font-bold cursor-pointer transition-all duration-300 hover:bg-blue-600 hover:-translate-y-1"
+                    onclick="CartSystem.add('MarramZCoins', '5 Moedas de MarramZCoins', 5)">
+                    + Carrinho
+                </button>
+            </div>
+            <div
+                class="bg-black/60 border-2 border-primary/30 rounded-2xl p-8 text-center transition-all duration-300 hover:border-primary hover:-translate-y-2 hover:shadow-xl backdrop-blur-sm">
+                <h3 class="font-orbitron text-2xl mb-4 text-primary">15 Moedas de MarramZCoins</h3>
+                <div class="text-3xl font-semibold text-accentBlue mb-5">R$ 15,00</div>
+                <p class="text-textSecondary mb-6 leading-relaxed">
+                    <strong>Inclui:</strong><br>
+                    15 moedas para comprar direto em nossa loja dentro do jogo
+                </p>
+                <button
+                    class="bg-accentBlue text-white border-none rounded-2xl px-4 py-2 text-sm font-bold cursor-pointer transition-all duration-300 hover:bg-blue-600 hover:-translate-y-1"
+                    onclick="CartSystem.add('MarramZCoins_15', '15 Moedas de MarramZCoins', 15)">
+                    + Carrinho
+                </button>
+            </div>
+            <div
+                class="bg-black/60 border-2 border-primary/30 rounded-2xl p-8 text-center transition-all duration-300 hover:border-primary hover:-translate-y-2 hover:shadow-xl backdrop-blur-sm">
+                <h3 class="font-orbitron text-2xl mb-4 text-primary">30 Moedas de MarramZCoins</h3>
+                <div class="text-3xl font-semibold text-accentBlue mb-5">R$ 30,00</div>
+                <p class="text-textSecondary mb-6 leading-relaxed">
+                    <strong>Inclui:</strong><br>
+                    30 moedas para comprar direto em nossa loja dentro do jogo
+                </p>
+                <button
+                    class="bg-accentBlue text-white border-none rounded-2xl px-4 py-2 text-sm font-bold cursor-pointer transition-all duration-300 hover:bg-blue-600 hover:-translate-y-1"
+                    onclick="CartSystem.add('MarramZCoins_30', '30 Moedas de MarramZCoins', 30)">
+                    + Carrinho
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-5 max-w-6xl mx-auto">
+        <div class="bg-black/50 p-16 rounded-3xl text-center border-2 border-primary/30">
+            <h2 class="font-orbitron text-3xl mb-5 text-primary">🎮 Suporte e Comunidade</h2>
+            <p class="mb-8 text-textSecondary">
+                Precisa de ajuda ou quer fazer parte da nossa comunidade? Entre em contato!
+            </p>
+            <div class="flex justify-center gap-8 flex-wrap">
+                <a href="https://discord.gg/marramz" target="_blank"
+                    class="inline-flex items-center gap-3 px-6 py-4 bg-accentBlue/10 border-2 border-accentBlue text-accentBlue rounded-full font-medium transition-all duration-300 hover:bg-accentBlue hover:text-darkBg hover:-translate-y-1">
+                    <span>🎮</span> Discord
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div id="alertModal" class="hidden fixed z-50 left-0 top-0 w-full h-full bg-black/80 backdrop-blur-sm">
+        <div
+            class="bg-black/90 my-20 mx-auto p-8 border-2 border-primary rounded-2xl w-11/12 max-w-lg relative animate-modalSlideIn backdrop-blur-sm">
+            <span
+                class="text-textSecondary float-right text-3xl font-bold cursor-pointer transition-colors duration-300 hover:text-primary"
+                onclick="closeModal('alertModal')">&times;</span>
+            <h3 id="alertTitle" class="text-primary mb-4"></h3>
+            <p id="alertMessage" class="text-textSecondary"></p>
+        </div>
+    </div>
+
+    <div class="fixed top-5 left-5 z-40">
+        <button
+            class="bg-primary text-black border-none p-2 rounded-full w-15 h-15 text-2xl cursor-pointer relative shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl"
+            onclick="CartSystem.toggle()">
+            🛒
+            <span id="cartCount"
+                class="absolute -top-1 -right-1 bg-secondary text-white rounded-full w-6 h-6 text-xs hidden items-center justify-center font-bold">0</span>
+        </button>
+
+        <div id="cartPanel"
+            class="absolute top-18 left-0 bg-black/90 border-2 border-primary rounded-2xl p-5 min-w-80 max-w-96 hidden backdrop-blur-sm max-h-96 overflow-y-auto shadow-xl">
+            <div class="text-primary text-lg font-bold mb-4 text-center">🛒 Carrinho de Compras</div>
+            <div id="cartItems" class="text-center text-textSecondary p-5">🛒 Carrinho vazio</div>
+            <div id="cartTotal" class="text-center mt-4 pt-4 border-t-2 border-primary hidden">
+                <div id="cartTotalPrice" class="text-accentBlue text-xl font-bold my-3">R$ 0,00</div>
+                <button
+                    class="w-full bg-gradient-to-r from-primary to-accentBlue text-black border-none rounded-full p-3 font-bold cursor-pointer mt-3 text-base transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                    onclick="CartSystem.checkout()">
+                    🚀 Finalizar Compra
+                </button>
+                <div class="mt-3 text-xs text-textSecondary">
+                    💡 Carrinho permanece aberto após compra
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="donationModal"
+        class="hidden fixed z-50 left-0 top-0 w-full h-full bg-black/80 backdrop-blur-sm flex items-center justify-center">
+        <div
+            class="bg-black/90 p-8 border-2 border-primary rounded-2xl w-11/12 max-w-xl relative animate-modalSlideIn backdrop-blur-sm shadow-2xl">
+
+            <button
+                class="absolute top-4 right-4 text-textSecondary text-3xl font-bold cursor-pointer transition-colors duration-300 hover:text-primary"
+                onclick="closeModal('donationModal')">&times;</button>
+
+            <h3 class="font-orbitron text-2xl text-primary mb-6 text-center">Dados para Doação</h3>
+
+            <form id="donationForm" class="space-y-6">
+                <div>
+                    <label for="fullName" class="block text-sm font-medium text-textSecondary mb-2">Nome
+                        Completo</label>
+                    <input type="text" id="fullName" name="fullName" required placeholder="Digite seu nome completo"
+                        class="w-full p-3 bg-darkBg border border-primary/50 rounded-lg text-textPrimary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-200">
+                </div>
+
+                <div>
+                    <label for="email" class="block text-sm font-medium text-textSecondary mb-2">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="Digite seu email"
+                        class="w-full p-3 bg-darkBg border border-primary/50 rounded-lg text-textPrimary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-200">
+                </div>
+
+                <div>
+                    <label for="steamId" class="block text-sm font-medium text-textSecondary mb-2">Steam ID (17
+                        dígitos)</label>
+                        <!-- Link para descobrir o steamId -->
+                         <a href="https://www.youtube.com/watch?v=wFRLVTvxKoc&ab_channel=CarlosFoggiatto" target="_blank" class="text-primary">Descubra sua Steam ID</a>
+                    <input type="text" id="steamId" name="steamId" required pattern="\d{17}" placeholder="Digite sua Steam ID"
+                        title="A Steam ID deve ter 17 dígitos."
+                        class="w-full p-3 bg-darkBg border border-primary/50 rounded-lg text-textPrimary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-200">
+                </div>
+
+                <div>
+                    <label for="nickname" class="block text-sm font-medium text-textSecondary mb-2">Nickname no
+                        Jogo</label>
+                    <input type="text" id="nickname" name="nickname" required placeholder="Digite seu nickname"
+                        class="w-full p-3 bg-darkBg border border-primary/50 rounded-lg text-textPrimary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-200">
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-gradient-to-r from-primary to-accentBlue text-black border-none rounded-full p-3 font-bold cursor-pointer mt-6 text-base transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                    Continuar com a Doação 🚀
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let selectedPlan = null;
+
+        function showAlert(title, message) {
+            console.log('⚠️ Mostrando alert:', title, message);
+            document.getElementById('alertTitle').textContent = title;
+            document.getElementById('alertMessage').textContent = message;
+            openModal('alertModal');
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        // Fechar modal clicando fora
+        window.onclick = function (event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.add('hidden');
+            }
+        }
+
+        async function processPayment() {
+            if (!selectedPlan) {
+                showAlert('Erro', 'Nenhum item selecionado para processar pagamento.');
+                return;
+            }
+
+            console.log('💳 Processando pagamento:', selectedPlan);
+            showAlert('Processando', 'Criando doação...');
+
+            try {
+                const donationData = {
+                    plan: {
+                        id: selectedPlan.id,
+                        name: selectedPlan.name,
+                        price: selectedPlan.price
+                    }
+                };
+
+                console.log('📤 Enviando dados:', donationData);
+
+                // Simular API call
+                setTimeout(() => {
+                    showAlert('Sucesso', 'Pagamento processado com sucesso!');
+                    setTimeout(() => {
+                        closeModal('alertModal');
+                    }, 2000);
+                }, 1500);
+
+            } catch (error) {
+                console.error('❌ Erro no pagamento:', error);
+                showAlert('Erro', 'Erro ao processar pagamento: ' + error.message);
+            }
+        }
+
+        // SISTEMA DE CARRINHO PERSISTENTE COM SESSIONSTORAGE
+        const CartSystem = {
+            items: [],
+            visible: false,
+            persistentMode: false,
+            STORAGE_KEY: 'marramz_cart',
+
+            init() {
+                console.log("🛒 Sistema de Carrinho Persistente Iniciado");
+                this.loadFromSession();
+                this.update();
+
+                // Adicionar listener para o formulário de doação
+                const donationForm = document.getElementById('donationForm');
+                if (donationForm) {
+                    donationForm.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        this.handleDonationData();
+                    });
+                }
+            },
+
+            // Salvar carrinho na sessão
+            saveToSession() {
+                try {
+                    const cartData = {
+                        items: this.items,
+                        timestamp: new Date().getTime()
+                    };
+                    sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(cartData));
+                    console.log("💾 Carrinho salvo na sessão:", cartData);
+                } catch (error) {
+                    console.error("❌ Erro ao salvar carrinho na sessão:", error);
+                }
+            },
+
+            // Carregar carrinho da sessão
+            loadFromSession() {
+                try {
+                    const cartData = sessionStorage.getItem(this.STORAGE_KEY);
+                    if (cartData) {
+                        const parsed = JSON.parse(cartData);
+                        this.items = parsed.items || [];
+                        console.log("📥 Carrinho carregado da sessão:", parsed);
+
+                        if (this.items.length > 0) {
+                            this.showSuccessMessage(`Carrinho restaurado! ${this.items.length} item(ns) encontrado(s).`);
+                        }
+                    }
+                } catch (error) {
+                    console.error("❌ Erro ao carregar carrinho da sessão:", error);
+                    this.items = [];
+                }
+            },
+
+            add(id, name, price) {
+                console.log("➕ Adicionando ao carrinho:", name, "R$", price);
+
+                const existing = this.items.find(item => item.id === id);
+                if (existing) {
+                    existing.quantity += 1;
+                } else {
+                    this.items.push({
+                        id,
+                        name,
+                        price: parseFloat(price),
+                        quantity: 1,
+                        addedAt: new Date().getTime()
+                    });
+                }
+
+                this.saveToSession();
+                this.update();
+                this.showSuccessMessage(name + " adicionado ao carrinho!");
+
+                if (!this.visible) {
+                    this.show();
+                    setTimeout(() => {
+                        if (!this.persistentMode) this.hide();
+                    }, 3000);
+                }
+            },
+
+            remove(id) {
+                this.items = this.items.filter(item => item.id !== id);
+                this.saveToSession();
+                this.update();
+                console.log("🗑️ Item removido do carrinho");
+            },
+
+            updateQuantity(id, change) {
+                const item = this.items.find(item => item.id === id);
+                if (item) {
+                    item.quantity += change;
+                    if (item.quantity <= 0) {
+                        this.remove(id);
+                    } else {
+                        this.saveToSession();
+                        this.update();
+                    }
+                }
+            },
+
+            clear() {
+                this.items = [];
+                this.saveToSession();
+                this.update();
+                console.log("🧹 Carrinho limpo");
+            },
+
+            update() {
+                const count = this.items.reduce((sum, item) => sum + item.quantity, 0);
+                const countEl = document.getElementById("cartCount");
+
+                if (count > 0) {
+                    countEl.textContent = count;
+                    countEl.classList.remove('hidden');
+                    countEl.classList.add('flex');
+                } else {
+                    countEl.classList.add('hidden');
+                    countEl.classList.remove('flex');
+                }
+
+                const itemsEl = document.getElementById("cartItems");
+                const totalEl = document.getElementById("cartTotal");
+
+                if (this.items.length === 0) {
+                    itemsEl.innerHTML = "<div class='text-center text-textSecondary p-5'>🛒 Carrinho vazio</div>";
+                    totalEl.classList.add('hidden');
+                } else {
+                    const total = this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+                    itemsEl.innerHTML = this.items.map(item =>
+                        `<div class='flex justify-between items-center p-3 m-2 bg-white/5 rounded-lg border border-primary/30'>
+                    <div class='flex-1 text-sm'>
+                        <div class='text-primary font-bold'>${item.name}</div>
+                        <div class='text-textSecondary text-xs'>R$ ${(item.price * item.quantity).toFixed(2).replace(".", ",")} (${item.quantity}x)</div>
+                    </div>
+                    <div class='flex gap-1 items-center'>
+                        <button class='bg-accentBlue text-white border-none rounded w-6 h-6 text-xs cursor-pointer flex items-center justify-center' onclick='CartSystem.updateQuantity("${item.id}", -1)'>-</button>
+                        <span class='mx-2 font-bold'>${item.quantity}</span>
+                        <button class='bg-accentBlue text-white border-none rounded w-6 h-6 text-xs cursor-pointer flex items-center justify-center' onclick='CartSystem.updateQuantity("${item.id}", 1)'>+</button>
+                        <button class='bg-secondary text-white border-none rounded w-6 h-6 text-xs cursor-pointer flex items-center justify-center ml-1' onclick='CartSystem.remove("${item.id}")'>×</button>
+                    </div>
+                </div>`
+                    ).join("");
+
+                    document.getElementById("cartTotalPrice").textContent = "Total: R$ " + total.toFixed(2).replace(".", ",");
+                    totalEl.classList.remove('hidden');
+                }
+            },
+
+            toggle() {
+                if (this.persistentMode) return;
+                this.visible = !this.visible;
+                if (this.visible) {
+                    this.show();
+                } else {
+                    this.hide();
+                }
+            },
+
+            show() {
+                this.visible = true;
+                document.getElementById("cartPanel").classList.remove('hidden');
+                console.log("🛒 Carrinho aberto");
+            },
+
+            hide() {
+                if (this.persistentMode) return;
+                this.visible = false;
+                document.getElementById("cartPanel").classList.add('hidden');
+                console.log("🛒 Carrinho fechado");
+            },
+
+            showPersistent() {
+                this.persistentMode = true;
+                this.visible = true;
+                const panel = document.getElementById("cartPanel");
+                panel.classList.add("persistent");
+                panel.classList.remove('hidden');
+                console.log("🔒 Carrinho em modo persistente - sempre aberto");
+            },
+
+            showSuccessMessage(message) {
+                const existing = document.querySelector(".cart-success-msg");
+                if (existing) existing.remove();
+                const msg = document.createElement("div");
+                msg.className = "cart-success-msg fixed top-24 right-5 bg-primary text-black px-5 py-4 rounded-xl font-bold z-50 animate-slideInRight";
+                msg.textContent = message;
+                document.body.appendChild(msg);
+                setTimeout(() => msg.remove(), 3000);
+            },
+
+            checkout() {
+                if (this.items.length === 0) {
+                    showAlert("Erro", "Adicione itens ao carrinho antes de finalizar a compra!");
+                    return;
+                }
+
+                console.log("💳 Iniciando checkout do carrinho");
+                this.showPersistent();
+                openModal('donationModal'); // Abre o modal de dados do doador
+            },
+
+            handleDonationData() {
+                const fullName = document.getElementById('fullName').value;
+                const email = document.getElementById('email').value;
+                const steamId = document.getElementById('steamId').value;
+                const nickname = document.getElementById('nickname').value;
+
+                // Validar se todos os campos foram preenchidos
+                if (!fullName || !email || !steamId || !nickname) {
+                    showAlert('Erro de Validação', 'Por favor, preencha todos os campos do formulário.');
+                    return;
+                }
+
+                const totalPrice = this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const itemsList = this.items.map(item => item.name + " (" + item.quantity + "x)").join(", ");
+
+                const donationData = {
+                    id: "cart_" + Date.now(),
+                    name: "Carrinho: " + itemsList,
+                    price: totalPrice,
+                    type: "cart",
+                    items: this.items,
+                    donorInfo: {
+                        fullName,
+                        email,
+                        steamId,
+                        nickname
+                    }
+                };
+
+                // Fecha o modal de dados e inicia o processamento do pagamento
+                closeModal('donationModal');
+                processPayment(donationData);
+            }
+        };
+
+        async function processPayment(donationData) {
+            if (!donationData) {
+                showAlert('Erro', 'Nenhum dado de doação fornecido.');
+                return;
+            }
+
+            console.log('💳 Processando pagamento:', donationData);
+            showAlert('Processando', 'Criando doação...');
+
+            try {
+                // Simular API call com os dados completos
+                // Aqui você faria a chamada real para sua API de pagamento
+                // fetch('sua-api-endpoint/doacao', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify(donationData)
+                // })
+                // .then(response => response.json())
+                // .then(data => {
+                //     // Lidar com a resposta da API (ex: link para o Pix, qr code)
+                //     showAlert('Sucesso', 'Pagamento processado com sucesso! Aguarde a confirmação.');
+                // });
+
+                setTimeout(() => {
+                    showAlert('Sucesso', 'Pagamento processado com sucesso! Em breve você receberá as moedas.');
+                    // Limpa o carrinho após a doação bem-sucedida (opcional)
+                    CartSystem.clear();
+                    setTimeout(() => {
+                        closeModal('alertModal');
+                    }, 3000);
+                }, 1500);
+
+            } catch (error) {
+                console.error('❌ Erro no pagamento:', error);
+                showAlert('Erro', 'Erro ao processar pagamento: ' + error.message);
+            }
+        }
+
+        // Inicializar carrinho quando página carrega
+        document.addEventListener('DOMContentLoaded', () => {
+            CartSystem.init();
+        });
+
+        // Salvar carrinho antes de sair da página
+        window.addEventListener('beforeunload', () => {
+            CartSystem.saveToSession();
+        });
+
+        // Salvar carrinho quando a página perde o foco
+        window.addEventListener('blur', () => {
+            CartSystem.saveToSession();
+        });
+    </script>
+</body>
+
+</html>
