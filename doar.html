@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="imagens/boteco_sem_fundo.png">
+    <link rel="shortcut icon" type="image/png" href="imagens/boteco_sem_fundo.png">
+    <link rel="apple-touch-icon" href="imagens/boteco_sem_fundo.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <title>Apoie o Servidor - MARRAMZ DayZ Store</title>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00ff41',
+                        secondary: '#ff4444',
+                        darkBg: '#0a0a0a',
+                        cardBg: 'rgba(15, 15, 15, 0.9)',
+                        textPrimary: '#ffffff',
+                        textSecondary: '#cccccc',
+                        accentBlue: '#00aaff'
+                    },
+                    fontFamily: {
+                        'rajdhani': ['Rajdhani', 'sans-serif'],
+                        'orbitron': ['Orbitron', 'monospace']
+                    },
+                    animation: {
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'modalSlideIn': 'modalSlideIn 0.3s ease-out',
+                        'slideInRight': 'slideInRight 0.5s ease',
+                        'cartGlow': 'cartGlow 2s infinite'
+                    },
+                    keyframes: {
+                        glow: {
+                            'from': {
+                                textShadow: '0 0 30px rgba(0, 255, 65, 0.6)'
+                            },
+                            'to': {
+                                textShadow: '0 0 50px rgba(0, 255, 65, 0.8)'
+                            }
+                        },
+                        modalSlideIn: {
+                            'from': {
+                                transform: 'translateY(-50px)',
+                                opacity: '0'
+                            },
+                            'to': {
+                                transform: 'translateY(0)',
+                                opacity: '1'
+                            }
+                        },
+                        slideInRight: {
+                            'from': {
+                                transform: 'translateX(100%)',
+                                opacity: '0'
+                            },
+                            'to': {
+                                transform: 'translateX(0)',
+                                opacity: '1'
+                            }
+                        },
+                        cartGlow: {
+                            '0%, 100%': {
+                                borderColor: '#00ff41'
+                            },
+                            '50%': {
+                                borderColor: '#00aaff'
+                            }
+                        }
+                    },
+                    backdropBlur: {
+                        '10': '10px'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-rajdhani bg-darkBg text-textPrimary leading-relaxed min-h-screen flex flex-col overflow-x-hidden">
+    <div class="relative flex-grow flex flex-col items-center justify-start py-10 px-4">
+        <video autoplay muted loop class="absolute top-0 left-0 w-full h-full object-cover -z-20">
+            <source src="imagens/dayz-background.mp4" type="video/mp4">
+        </video>
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-black/70 via-black/50 to-black/80 -z-10">
+        </div>
+
+        <header class="w-full max-w-3xl z-10 mb-12">
+            <nav class="flex flex-col md:flex-row items-center justify-center bg-cardBg backdrop-blur-sm p-4 rounded-xl border border-primary/20 shadow-lg">
+                <div class="flex items-center space-x-6 mb-4 md:mb-0">
+                    <a href="doar.html" class="flex items-center space-x-2 text-xl font-bold font-orbitron text-primary animate-glow">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <span>Apoie o Servidor</span>
+                    </a>
+                    <a href="loja.html" class="px-3 py-2 text-primary font-bold rounded-full hover:bg-primary/20 transition-colors">
+                        🛒 Loja de Itens
+                    </a>
+                    <a href="https://discord.gg/marramz" target="_blank" class="px-3 py-2 text-primary font-bold rounded-full hover:bg-primary/20 transition-colors">
+                        📱 Discord
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <main class="w-full max-w-6xl z-10">
+            <h1 class="text-4xl md:text-5xl text-center font-orbitron font-bold text-primary animate-glow mb-8">
+                💝 Formas de Apoiar
+            </h1>
+            <p class="text-xl text-center text-textSecondary max-w-3xl mx-auto mb-12">
+                Escolha a melhor forma de apoiar o servidor MARRAMZ. Cada contribuição faz a diferença e ajuda a manter nossa comunidade ativa!
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="bg-cardBg rounded-xl border-2 border-primary/20 shadow-lg p-6 flex flex-col transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <span class="text-4xl text-primary font-orbitron font-bold">⚡</span>
+                        <h2 class="text-3xl font-orbitron font-bold text-primary">Doação Rápida</h2>
+                    </div>
+                    <p class="text-textSecondary mb-4 flex-grow">
+                        Valores pré-definidos para apoio rápido ao servidor. Ideal para quem quer contribuir de forma simples.
+                    </p>
+                    <ul class="text-lg text-textSecondary space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i> Processo rápido e seguro
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i> Confirmação imediata
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i> Agradecimento no Discord
+                        </li>
+                    </ul>
+                    <a href="#" class="w-full px-6 py-3 text-center bg-primary/10 border-2 border-primary text-primary font-bold rounded-full transition-all duration-300 hover:bg-primary hover:text-darkBg hover:-translate-y-1 hover:shadow-lg">
+                        ⚡ Doar Rapidamente
+                    </a>
+                </div>
+
+                <div class="bg-cardBg rounded-xl border-2 border-primary/20 shadow-lg p-6 flex flex-col transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <span class="text-4xl text-primary font-orbitron font-bold">💎</span>
+                        <h2 class="text-3xl font-orbitron font-bold text-primary">Doação Personalizada</h2>
+                    </div>
+                    <p class="text-textSecondary mb-4 flex-grow">
+                        Você escolhe o valor e descreve exatamente o que gostaria de receber. Nossa equipe analisa e entrega seus itens personalizados!
+                    </p>
+                    <ul class="text-lg text-textSecondary space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i> Valor totalmente livre (mín. R$ 5,00)
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i> Descreva o que quer receber
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i> Entrega personalizada via Discord
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i> Suporte dedicado da equipe
+                        </li>
+                    </ul>
+                    <a href="#" class="w-full px-6 py-3 text-center bg-primary/10 border-2 border-primary text-primary font-bold rounded-full transition-all duration-300 hover:bg-primary hover:text-darkBg hover:-translate-y-1 hover:shadow-lg">
+                        💎 Personalizar Doação
+                    </a>
+                </div>
+
+                <div class="bg-cardBg rounded-xl border-2 border-primary/20 shadow-lg p-6 flex flex-col transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <span class="text-4xl text-primary font-orbitron font-bold">🔄</span>
+                        <h2 class="text-3xl font-orbitron font-bold text-primary">Apoio Contínuo</h2>
+                    </div>
+                    <p class="text-textSecondary mb-4 flex-grow">
+                        Torne-se um apoiador contínuo do servidor. Entre em contato via Discord para configurar apoio mensal.
+                    </p>
+                    <ul class="text-lg text-textSecondary space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i> Benefícios exclusivos
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i> Reconhecimento especial
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i> Participação em decisões
+                        </li>
+                    </ul>
+                    <a href="#" class="w-full px-6 py-3 text-center bg-primary/10 border-2 border-primary text-primary font-bold rounded-full transition-all duration-300 hover:bg-primary hover:text-darkBg hover:-translate-y-1 hover:shadow-lg">
+                        🔄 Saber Mais
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <section class="w-full max-w-6xl z-10 mt-16">
+            <h2 class="text-3xl md:text-4xl text-center font-orbitron font-bold text-primary mb-4">
+                🎮 Suporte e Comunidade
+            </h2>
+            <p class="text-lg text-center text-textSecondary mb-8">
+                Precisa de ajuda ou tem dúvidas? Nossa comunidade está sempre pronta para ajudar!
+            </p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6">
+                <a href="https://discord.gg/marramz" target="_blank" class="px-6 py-3 bg-cardBg border-2 border-accentBlue text-accentBlue font-bold rounded-full transition-all duration-300 hover:bg-accentBlue hover:text-darkBg hover:-translate-y-1 hover:shadow-lg">
+                    📱 Discord MARRAMZ
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <footer class="bg-cardBg text-textSecondary py-8 border-t-2 border-primary/20 mt-auto">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg mb-2">&copy; 2023 MARRAMZ DayZ Store. Todos os direitos reservados.</p>
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-2 text-sm">
+                <p>Powered by</p>
+                <a href="https://forcoder.com.br" class="text-primary flex items-center group">
+                    <img src="imagens/logo-fc.png" alt="ForCoder Logo" class="h-6 mr-2 transition-all duration-300 group-hover:scale-110">
+                    <span class="font-orbitron font-bold transition-all duration-300 group-hover:text-primary group-hover:animate-glow">ForCoder.com.br</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

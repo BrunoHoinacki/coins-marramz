@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="imagens/boteco_sem_fundo.png">
+    <link rel="shortcut icon" type="image/png" href="imagens/boteco_sem_fundo.png">
+    <link rel="apple-touch-icon" href="imagens/boteco_sem_fundo.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <title>Doação Aprovada - MARRAMZ DayZ Store</title>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00ff41',
+                        secondary: '#ff4444',
+                        darkBg: '#0a0a0a',
+                        cardBg: 'rgba(15, 15, 15, 0.9)',
+                        textPrimary: '#ffffff',
+                        textSecondary: '#cccccc',
+                        accentBlue: '#00aaff'
+                    },
+                    fontFamily: {
+                        'rajdhani': ['Rajdhani', 'sans-serif'],
+                        'orbitron': ['Orbitron', 'monospace']
+                    },
+                    animation: {
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'modalSlideIn': 'modalSlideIn 0.3s ease-out',
+                        'slideInRight': 'slideInRight 0.5s ease',
+                        'cartGlow': 'cartGlow 2s infinite'
+                    },
+                    keyframes: {
+                        glow: {
+                            'from': { textShadow: '0 0 30px rgba(0, 255, 65, 0.6)' },
+                            'to': { textShadow: '0 0 50px rgba(0, 255, 65, 0.8)' }
+                        },
+                        modalSlideIn: {
+                            'from': { transform: 'translateY(-50px)', opacity: '0' },
+                            'to': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideInRight: {
+                            'from': { transform: 'translateX(100%)', opacity: '0' },
+                            'to': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        cartGlow: {
+                            '0%, 100%': { borderColor: '#00ff41' },
+                            '50%': { borderColor: '#00aaff' }
+                        }
+                    },
+                    backdropBlur: {
+                        '10': '10px'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #0a0a0a;
+            overflow-x: hidden;
+        }
+
+        .logo-glow {
+            filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.6));
+            transition: all 0.3s ease;
+        }
+
+        .logo-glow:hover {
+            filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.8));
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body class="font-rajdhani bg-darkBg text-textPrimary leading-relaxed overflow-x-hidden">
+    <div class="relative h-screen flex items-center justify-center overflow-hidden">
+        <video autoplay muted loop class="absolute top-0 left-0 w-full h-full object-cover -z-20">
+            <source src="imagens/dayz-background.mp4" type="video/mp4">
+        </video>
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-black/70 via-black/50 to-black/80 -z-10">
+        </div>
+
+        <div
+            class="text-center z-10 max-w-4xl px-5 py-10 bg-cardBg rounded-xl shadow-lg border border-primary/20 animate-modalSlideIn">
+            <i class="fas fa-check-circle text-primary text-8xl mb-6 animate-pulse"></i>
+            <h1 class="text-4xl md:text-5xl font-orbitron font-bold mb-4 animate-glow">
+                Doação Aprovada!
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-textSecondary">
+                Agradecemos o seu apoio. Sua jornada continua mais forte agora.
+            </p>
+            <a href="loja.html"
+                class="px-8 py-4 bg-primary/10 border-2 border-primary text-primary font-bold rounded-full transition-all duration-300 hover:bg-primary hover:text-darkBg hover:-translate-y-1 hover:shadow-lg backdrop-blur-sm text-lg">
+                Voltar para a Loja
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

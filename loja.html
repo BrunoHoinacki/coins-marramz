@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -101,7 +101,7 @@
                         md:w-[750px] sm:w-[600px]" id="mainLogo">
             <p class="text-2xl mb-8 text-textSecondary">Sua jornada DayZ começa aqui</p>
 
-            <nav class="fixed top-5 right-5 z-50 flex flex-col md:flex-row gap-4">
+            <nav class="fixed top-5 right-5 z-50 flex flex-row gap-4">
                 <a href="doar.html"
                     class="px-5 py-3 bg-gradient-to-r from-yellow-400 to-yellow-300 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg backdrop-blur-sm">
                     💎 Doar
@@ -248,10 +248,11 @@
                 <div>
                     <label for="steamId" class="block text-sm font-medium text-textSecondary mb-2">Steam ID (17
                         dígitos)</label>
-                        <!-- Link para descobrir o steamId -->
-                         <a href="https://www.youtube.com/watch?v=wFRLVTvxKoc&ab_channel=CarlosFoggiatto" target="_blank" class="text-primary">Descubra sua Steam ID</a>
-                    <input type="text" id="steamId" name="steamId" required pattern="\d{17}" placeholder="Digite sua Steam ID"
-                        title="A Steam ID deve ter 17 dígitos."
+                    <!-- Link para descobrir o steamId -->
+                    <a href="https://www.youtube.com/watch?v=wFRLVTvxKoc&ab_channel=CarlosFoggiatto" target="_blank"
+                        class="text-primary">Descubra sua Steam ID</a>
+                    <input type="text" id="steamId" name="steamId" required pattern="\d{17}"
+                        placeholder="Digite sua Steam ID" title="A Steam ID deve ter 17 dígitos."
                         class="w-full p-3 bg-darkBg border border-primary/50 rounded-lg text-textPrimary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-200">
                 </div>
 
@@ -269,6 +270,20 @@
             </form>
         </div>
     </div>
+
+    <footer class="bg-cardBg text-textSecondary py-8 border-t-2 border-primary/20">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg mb-2">&copy; 2023 MARRAMZ DayZ Store. Todos os direitos reservados.</p>
+            <div
+                class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-2 text-sm">
+                <p>Powered by</p>
+                <a href="https://forcoder.com.br" class="text-primary flex items-center group">
+                    <img src="imagens/logo-fc.png" alt="ForCoder Logo"
+                        class="h-12 mr-2 transition-all duration-300 group-hover:scale-110">
+                </a>
+            </div>
+        </div>
+    </footer>
 
     <script>
         let selectedPlan = null;
@@ -295,40 +310,6 @@
             }
         }
 
-        async function processPayment() {
-            if (!selectedPlan) {
-                showAlert('Erro', 'Nenhum item selecionado para processar pagamento.');
-                return;
-            }
-
-            console.log('💳 Processando pagamento:', selectedPlan);
-            showAlert('Processando', 'Criando doação...');
-
-            try {
-                const donationData = {
-                    plan: {
-                        id: selectedPlan.id,
-                        name: selectedPlan.name,
-                        price: selectedPlan.price
-                    }
-                };
-
-                console.log('📤 Enviando dados:', donationData);
-
-                // Simular API call
-                setTimeout(() => {
-                    showAlert('Sucesso', 'Pagamento processado com sucesso!');
-                    setTimeout(() => {
-                        closeModal('alertModal');
-                    }, 2000);
-                }, 1500);
-
-            } catch (error) {
-                console.error('❌ Erro no pagamento:', error);
-                showAlert('Erro', 'Erro ao processar pagamento: ' + error.message);
-            }
-        }
-
         // SISTEMA DE CARRINHO PERSISTENTE COM SESSIONSTORAGE
         const CartSystem = {
             items: [],
@@ -341,7 +322,6 @@
                 this.loadFromSession();
                 this.update();
 
-                // Adicionar listener para o formulário de doação
                 const donationForm = document.getElementById('donationForm');
                 if (donationForm) {
                     donationForm.addEventListener('submit', (e) => {
@@ -351,7 +331,6 @@
                 }
             },
 
-            // Salvar carrinho na sessão
             saveToSession() {
                 try {
                     const cartData = {
@@ -365,7 +344,6 @@
                 }
             },
 
-            // Carregar carrinho da sessão
             loadFromSession() {
                 try {
                     const cartData = sessionStorage.getItem(this.STORAGE_KEY);
@@ -531,7 +509,7 @@
 
                 console.log("💳 Iniciando checkout do carrinho");
                 this.showPersistent();
-                openModal('donationModal'); // Abre o modal de dados do doador
+                openModal('donationModal');
             },
 
             handleDonationData() {
@@ -540,7 +518,6 @@
                 const steamId = document.getElementById('steamId').value;
                 const nickname = document.getElementById('nickname').value;
 
-                // Validar se todos os campos foram preenchidos
                 if (!fullName || !email || !steamId || !nickname) {
                     showAlert('Erro de Validação', 'Por favor, preencha todos os campos do formulário.');
                     return;
@@ -563,61 +540,41 @@
                     }
                 };
 
-                // Fecha o modal de dados e inicia o processamento do pagamento
                 closeModal('donationModal');
-                processPayment(donationData);
+                processPayment(this.items, { fullName, email, steamId, nickname });
             }
         };
 
-        async function processPayment(donationData) {
-            if (!donationData) {
-                showAlert('Erro', 'Nenhum dado de doação fornecido.');
-                return;
-            }
-
-            console.log('💳 Processando pagamento:', donationData);
-            showAlert('Processando', 'Criando doação...');
-
+        async function processPayment(items, donorInfo) {
+            showAlert('Processando', 'Criando doação e gerando link de pagamento...');
             try {
-                // Simular API call com os dados completos
-                // Aqui você faria a chamada real para sua API de pagamento
-                // fetch('sua-api-endpoint/doacao', {
-                //     method: 'POST',
-                //     headers: { 'Content-Type': 'application/json' },
-                //     body: JSON.stringify(donationData)
-                // })
-                // .then(response => response.json())
-                // .then(data => {
-                //     // Lidar com a resposta da API (ex: link para o Pix, qr code)
-                //     showAlert('Sucesso', 'Pagamento processado com sucesso! Aguarde a confirmação.');
-                // });
+                const response = await fetch('checkout.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ items, donorInfo })
+                });
 
-                setTimeout(() => {
-                    showAlert('Sucesso', 'Pagamento processado com sucesso! Em breve você receberá as moedas.');
-                    // Limpa o carrinho após a doação bem-sucedida (opcional)
-                    CartSystem.clear();
-                    setTimeout(() => {
-                        closeModal('alertModal');
-                    }, 3000);
-                }, 1500);
+                const data = await response.json();
 
+                if (response.ok) {
+                    window.location.href = data.init_point;
+                } else {
+                    showAlert('Erro de Pagamento', data.error || 'Ocorreu um erro ao gerar o pagamento.');
+                }
             } catch (error) {
-                console.error('❌ Erro no pagamento:', error);
-                showAlert('Erro', 'Erro ao processar pagamento: ' + error.message);
+                console.error('❌ Erro na comunicação com o servidor:', error);
+                showAlert('Erro', 'Não foi possível conectar ao servidor de pagamento.');
             }
         }
 
-        // Inicializar carrinho quando página carrega
         document.addEventListener('DOMContentLoaded', () => {
             CartSystem.init();
         });
 
-        // Salvar carrinho antes de sair da página
         window.addEventListener('beforeunload', () => {
             CartSystem.saveToSession();
         });
 
-        // Salvar carrinho quando a página perde o foco
         window.addEventListener('blur', () => {
             CartSystem.saveToSession();
         });
